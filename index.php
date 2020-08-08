@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <?php include '../needed/include/head.html'; ?>
-    <script src="https://kit.fontawesome.com/d120c0b89f.js"></script>
+    <?php
+    require_once("../include/head.php");
+    ?>
+
     <style>
+    html{
+      width:100%;
+      overflow-x: hidden;
+    }
     .table{
     width: auto;
     margin:auto;
@@ -12,7 +18,7 @@
   </head>
   <body>
     <?php
-    include '../needed/include/navbar.html';
+    require_once("../include/navbar.php");
 
     if(isset($_GET['cinsiyet'])) {
       if($_GET['cinsiyet'] == "erkek")
@@ -36,14 +42,8 @@
           break;
       }
     }
-    $json = file_get_contents("http://ihaksoy.com/rastgele_profil/api.php?cinsiyet=$cinsiyet");
+    $json = file_get_contents("http://www.ihaksoy.com/projects/rastgele_profil/api.php?cinsiyet=$cinsiyet");
     $data = json_decode($json,true);
-
-    $fp = fopen("data/visitsProfile.txt", "r");
-    $count = fread($fp, 1024);
-    fclose($fp);
-    $count = $count + 1;
-
     ?>
 
       <body>
@@ -117,11 +117,7 @@
         </div>
 
         <?php
-          include '../needed/include/footer.html';
-          include '../needed/include/js.html';
-          $fp = fopen("data/visitsProfile.txt", "w");
-          fwrite($fp, $count);
-          fclose($fp)
-          ?>
+        require_once("../include/footer.php");
+        ?>
       </body>
 </html>

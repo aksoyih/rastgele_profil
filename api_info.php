@@ -1,15 +1,23 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-<?php require '../needed/include/head.html'; ?>
+<head>
+  <?php
+  require_once("../include/head.php");
+  ?>
+  <style media="screen">
+    html{
+      width:100%;
+      overflow-x: hidden;
+    }
+    .col-11 mb-1 mt-3{
+      width:80%;
+    }
+    </style>
+</head>
   <body>
-<!-- navbar -->
-<?php require '../needed/include/navbar.html';
-$fp = fopen("data/visits.txt", "r");
-$count = fread($fp, 1024);
-fclose($fp);
-?>
-<!-- navbar -->
-
+    <?php
+    require_once("../include/navbar.php");
+    ?>
 <!-- body -->
 <div class="containter-fluid ml-2">
   <div class="row mt-5 mb-5 pl-2">
@@ -18,7 +26,7 @@ fclose($fp);
     </div>
     <div class="col-12 pt-3 pb-2">
       <p>Bu API ile JSON formatında rastgele profil verisi elde edebilirsiniz.</p>
-      <p>JSON verisinin doğruluğu <a href="https://jsonlint.com/">www.jsonlint.com</a> adresi üzerinden teyit edilebilir.</p>
+      <p>JSON verisinin doğruluğu <a href="https://jsonlint.com/">www.jsonlint.com</a> adresi üzerinden teyit edilmiştir.</p>
 
       <p>Kabul edilen parametreler:
       <ul>
@@ -28,13 +36,12 @@ fclose($fp);
       <p>Örnek kullanım:</p>
       <p>
         <ul>
-          <li>Erkek profili için: <a href="api.php?cinsiyet=erkek"><b>http://ihaksoy.com/rastgele_profil/api.php?cinsiyet=erkek</b></a></li>
-          <li>Kadın profili için: <a href="api.php?cinsiyet=kadin"><b>http://ihaksoy.com/rastgele_profil/api.php?cinsiyet=kadin</b></a></li>
-          <li>Unisex profil için: <a href="api.php?cinsiyet=unisex"><b>http://ihaksoy.com/rastgele_profil/api.php?cinsiyet=unisex</b></a></li>
-          <li>Belirtilen sayıda profil için: <a href="api.php?adet=10"><b>http://ihaksoy.com/rastgele_profil/api.php?adet=10</b></a></li>
+          <li>Erkek profili için: <a href="api.php?cinsiyet=erkek"><b>http://www.ihaksoy.com/projects/rastgele_profil/api.php?cinsiyet=erkek</b></a></li>
+          <li>Kadın profili için: <a href="api.php?cinsiyet=kadin"><b>http://www.ihaksoy.com/projects/rastgele_profil/api.php?cinsiyet=kadin</b></a></li>
+          <li>Unisex profil için: <a href="api.php?cinsiyet=unisex"><b>http://www.ihaksoy.com/projects/rastgele_profil/api.php?cinsiyet=unisex</b></a></li>
+          <li>Belirtilen sayıda profil için: <a href="api.php?adet=10"><b>http://www.ihaksoy.com/projects/rastgele_profil/api.php?adet=10</b></a></li>
         </ul>
-        <i>Önemli: Herhangi bir parametre girilmeden (<b>örnek: <a href="http://ihaksoy.com/rastgele_profil/api.php">http://ihaksoy.com/rastgele_profil/api.php</a></b>) rastegele cinsiyet belirlenir.</i></p>
-        <p class="text-muted">Toplam API istekleri: <b><?= $count?></b></p>
+        <i>Önemli: Herhangi bir parametre girilmeden (<b>örnek: <a href="http://www.ihaksoy.com/projects/rastgele_profil/api.php">http://www.ihaksoy.com/projects/rastgele_profil/api.php</a></b>) rastegele cinsiyet belirlenir.</i></p>
   </div>
 
   <div class="col-9 mt-3">
@@ -51,9 +58,6 @@ fclose($fp);
   </div>
   </div>
 </div>
-<?php include '../needed/include/footer.html'; ?>
-<?php require '../needed/include/js.html'; ?>
-<script src="../needed/clipboard.js-master/dist/clipboard.min.js"></script>
 <script>
     var clipboard = new ClipboardJS('.btn');
 
@@ -67,5 +71,9 @@ fclose($fp);
     });
 
     </script>
+
+    <?php
+    require_once("../include/footer.php");
+    ?>
   </body>
 </html>

@@ -1,4 +1,7 @@
 <?php
+header("Access-Control-Allow-Origin: *");
+header("Content-Type: application/json; charset=UTF-8");
+
 if(isset($_GET['cinsiyet'])){ //check if cinsiyet parameter value is set
   $GETgender = $_GET['cinsiyet'];
   if (($GETgender == "erkek")||($GETgender == "kadin")||($GETgender == "unisex")) { //if cinsiyet parameter value is erkek, kadin or unisex
@@ -85,7 +88,7 @@ if(($statusCinsiyet === true)&&($statusAdet===true)){ //checks for both green li
         'yas' => $profile["age"],
         'telefon' => $profile["phone"],
         'hobiler' => $profile["hobbies"],
-        'fotograf' => "http://ihaksoy.com/rastgele_profil/".$profile["picture_src"],
+        'fotograf' => "http://www.ihaksoy.com/projects/rastgele_profil/".$profile["picture_src"],
         'fotograf_credits_name' => $profile['picture_username'],
         'fotograf_credits_url' => $profile['picture_user_url']
       ]);
@@ -109,7 +112,7 @@ if(($statusCinsiyet === true)&&($statusAdet===true)){ //checks for both green li
         'yas' => $profile["age"],
         'telefon' => $profile["phone"],
         'hobiler' => $profile["hobbies"],
-        'fotograf' => "http://ihaksoy.com/rastgele_profil/".$profile["picture_src"],
+        'fotograf' => "http://www.ihaksoy.com/projects/rastgele_profil/".$profile["picture_src"],
         'fotograf_credits_name' => $profile['picture_username'],
         'fotograf_credits_url' => $profile['picture_user_url']
       ];

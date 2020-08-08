@@ -89,7 +89,7 @@ class human{
       $strJsonFileContents = file_get_contents("pictures/credits_man.json");
       $json = json_decode($strJsonFileContents, true);
 
-      $x = rand(1,90);
+      $x = rand(1,80);
       $src = $data[$x];
       $user_name = $json[$data[$x]]["user_name"];
       $user_url = $json[$data[$x]]["user_url"];

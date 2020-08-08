@@ -1,17 +1,23 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-<?php require '../needed/include/head.html'; ?>
-<style>
-body{
-  width:100%;
-}
-.col-11 mb-1 mt-3{
-  width:80%;
-}
-</style>
+<html lang="tr" dir="ltr">
+<head>
+<?php
+require_once("../include/head.php");
+?>
+    <style>
+    html{
+      width:100%;
+      overflow-x: hidden;
+    }
+    .col-11 mb-1 mt-3{
+      width:80%;
+    }
+    </style>
+</head>
+
   <body>
 <!-- navbar -->
-<?php require '../needed/include/navbar.html';
+<?php
 function getFileSize($file)
     {
         $bytes = filesize($file);
@@ -43,18 +49,12 @@ function getFileSize($file)
 
         return $bytes;
 }
-
-$fp = fopen("data/visitsProfile.txt", "r");
-$count = fread($fp, 1024);
-fclose($fp);
-$count = $count + 1;
-
-
+require_once("../include/navbar.php");
 ?>
 <!-- navbar -->
 
 <!-- body -->
-<div class="containter-fluid ml-2">
+<div class="containter-fluid ml-2 mb-3">
   <div class="row mt-5 mb-5 pl-2">
     <div class="col-12">
       <h1>Rastgele Profil Oluşturma</h1>
@@ -63,7 +63,6 @@ $count = $count + 1;
       <p>Bu uygulama ile cinsiyete göre rastgele profil oluşturabilirsiniz.</p>
       <p>Uygulamada kullanılan veriler (isim ve soyadları, iller ve ilçeler, meslekler ve hobiler) aşağıda indirilebilir.</p>
       <p>Uygulamada kullanılan profil fotoğrafları CC0 1.0 lisansı altında <a href="https://www.unsplash.com">unsplash.com</a> sitesinden alınmıştır.</p>
-      <p class="text-muted">Toplamda <b><?=$count?></b> adet rastgele profil oluşturuldu.</p>
       <p><a href="index.php" class="btn btn-lg btn-primary mx-auto mb-3 mt-3">Uygulamaya geri dön</a>  <a href="api_info.php" class="btn btn-lg btn-primary mx-auto mb-3 mt-3">API</a></p>
 
       <div class="col-10 ml-2 border">
@@ -99,16 +98,13 @@ $count = $count + 1;
     </div>
     </div>
 
-    <div class="col-12 bg-light" id="code">
+    <div class="col-11 bg-light" id="code">
       <?php
       highlight_file("lib.php");
       ?>
     </div>
 
   </div>
-  <?php include '../needed/include/footer.html'; ?>
-  <?php require '../needed/include/js.html'; ?>
-  <script src="../needed/clipboard.js-master/dist/clipboard.min.js"></script>
   <script>
       var clipboard = new ClipboardJS('.btn');
 
@@ -122,5 +118,9 @@ $count = $count + 1;
       });
 
       </script>
+
+<?php
+require_once("../include/footer.php");
+?>
   </body>
 </html>
